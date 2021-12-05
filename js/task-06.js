@@ -16,7 +16,7 @@ inputEl.addEventListener("blur", onInputBlur);
 function onInputBlur({ currentTarget }) {
   const minLength = currentTarget.getAttribute("data-length");
 
-  if (currentTarget.value.length >= minLength) {
+  if (currentTarget.value.length == Number(minLength)) {
     currentTarget.classList.add("valid");
     currentTarget.classList.remove("invalid");
   } else {
