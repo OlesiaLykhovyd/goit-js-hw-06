@@ -17,14 +17,16 @@ const ingredients = [
 ];
 
 const listEl = document.querySelector("#ingredients");
+const fragment = document.createDocumentFragment();
 
 function createEl(arr) {
   arr.forEach((element) => {
     const listItem = document.createElement("li");
     listItem.textContent = element;
     listItem.classList.add("item");
-    listEl.append(listItem);
+    fragment.append(listItem);
   });
 }
 
 createEl(ingredients);
+listEl.append(fragment);
