@@ -31,29 +31,30 @@ buttonDestroyEl.addEventListener("click", destroyBoxes);
 let size = 30;
 
 function createBoxes(amount) {
+  const fragment = document.createDocumentFragment();
+
   for (let i = 1; i <= amount; i += 1) {
     const newDiv = document.createElement("div");
 
     newDiv.style.width = size + "px";
     newDiv.style.height = size + "px";
     newDiv.style.backgroundColor = getRandomHexColor();
-    boxesContainerEl.appendChild(newDiv);
+
+    fragment.append(newDiv);
     size += 10;
   }
+  boxesContainerEl.append(fragment);
 }
 
 function onCreateBtnClick() {
   const amount = Number(inputNumberEl.value);
 
   createBoxes(amount);
+
+  inputNumberEl.value = "";
 }
 
 function destroyBoxes() {
   size = 30;
-  const boxes = document.getElementById("boxes");
-  const children = [...boxes.children];
-
-  for (const child of children) {
-    child.remove();
-  }
+  boxesContainerEl.innerHTML = "";
 }
